@@ -9,15 +9,20 @@
 #import "Controller.h"
 
 @implementation Controller
+static NSMutableArray *quizArray = nil;
+
 
 -(IBAction)answerSelected:(UIButton*)sender {
     
     //Grab selected value
     NSString* answer = [sender currentTitle];
     //Compare to correct answer
-    NSMutableArray* questionsArray = [self makeQuiz];
-    int index = [self populateQuiz:questionsArray];
-    NSLog(@"%d", [self checkAnswer:questionsArray curr_index:index answer:answer]);
+    if (quizArray) {
+        quizArray = [self makeQuiz];
+    }
+    
+    int index = [self populateQuiz:quizArray];
+    NSLog(@"%d", [self checkAnswer:quizArray curr_index:index answer:answer]);
     
     //Decide
     
@@ -86,10 +91,10 @@
 }
 
 -(int)populateQuiz:(NSMutableArray*)questionsArray {
-    int random = arc4random() % [questionsArray count];
-    [imageView setImage:[[questionsArray objectAtIndex:random] objectAtIndex:0]];
+    int index = arc4random() % [questionsArray count];
+    [imageView setImage:[[questionsArray objectAtIndex:index] objectAtIndex:0]];
     
-    NSMutableArray* answers = [[NSMutableArray alloc] initWithObjects:[[questionsArray objectAtIndex:random] objectAtIndex:1], nil];
+    NSMutableArray* answers = [[NSMutableArray alloc] initWithObjects:[[questionsArray objectAtIndex:index] objectAtIndex:1], nil];
     
     for (NSMutableArray* question in questionsArray) {
         if (![[question objectAtIndex:1] isEqual:[answers objectAtIndex:0]]) {
@@ -108,7 +113,7 @@
     [answer8 setTitle:[answers objectAtIndex:7] forState: UIControlStateNormal];
     [answer9 setTitle:[answers objectAtIndex:8] forState: UIControlStateNormal];
     
-    return random;
+    return index;
 }
 
 -(BOOL)checkAnswer:(NSMutableArray*)questionsArray curr_index:(int)index answer:(NSString*)user_answer {
