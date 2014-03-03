@@ -26,5 +26,9 @@
 }
 
 -(IBAction)answerSelected:(UIButton*)sender;
+-(NSMutableArray*)makeQuiz;
+- (void)shuffle:(NSMutableArray*)answers;
+-(int)populateQuiz:(NSMutableArray*)questionsArray;
+-(BOOL)checkAnswer:(NSMutableArray*)questionsArray curr_index:(int)index answer:(NSString*)user_answer;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "QuestionMaker.h"
+#import "Controller.h"
 
 @implementation QuestionMaker
 
