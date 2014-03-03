@@ -11,19 +11,11 @@
 @interface Controller : NSObject {
     IBOutlet UIImageView *imageView;
     
-    IBOutlet UIButton *answer1;
-    IBOutlet UIButton *answer2;
-    IBOutlet UIButton *answer3;
-    IBOutlet UIButton *answer4;
-    IBOutlet UIButton *answer5;
-    IBOutlet UIButton *answer6;
-    IBOutlet UIButton *answer7;
-    IBOutlet UIButton *answer8;
-    IBOutlet UIButton *answer9;
-    
     IBOutlet UILabel *feedback;
     IBOutlet UILabel *questions;
 }
+
+@property (nonatomic, retain) IBOutletCollection(UIButton) NSArray *buttons;
 
 -(IBAction)answerSelected:(UIButton*)sender;
 -(NSMutableArray*)makeQuiz;

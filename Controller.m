@@ -9,7 +9,11 @@
 #import "Controller.h"
 
 @implementation Controller
-static NSMutableArray *quizArray = nil;
+
+@synthesize buttons;
+NSMutableArray* quizArray = nil;
+int currIndex = 0;
+int questionCount = 9;
 
 
 -(IBAction)answerSelected:(UIButton*)sender {
@@ -17,12 +21,11 @@ static NSMutableArray *quizArray = nil;
     //Grab selected value
     NSString* answer = [sender currentTitle];
     //Compare to correct answer
-    if (quizArray) {
-        quizArray = [self makeQuiz];
+    if (!quizArray) {
+        quizArray  = [self makeQuiz];
     }
-    
-    int index = [self populateQuiz:quizArray];
-    NSLog(@"%d", [self checkAnswer:quizArray curr_index:index answer:answer]);
+    NSLog(@"%d", [self checkAnswer:quizArray curr_index:currIndex answer:answer]);
+    currIndex = [self populateQuiz:quizArray];
     
     //Decide
     
@@ -30,7 +33,7 @@ static NSMutableArray *quizArray = nil;
 
 -(NSMutableArray*)makeQuiz {
     NSMutableArray *innerArray = [[NSMutableArray alloc] initWithCapacity:2];
-    NSMutableArray *outerArray = [[NSMutableArray alloc] initWithCapacity:12];
+    NSMutableArray *outerArray = [[NSMutableArray alloc] init];
     
     [innerArray addObject:[UIImage imageNamed:@"blue_bomb.png"]];
     [innerArray addObject:@"Blue Bomb"];
@@ -96,22 +99,25 @@ static NSMutableArray *quizArray = nil;
     
     NSMutableArray* answers = [[NSMutableArray alloc] initWithObjects:[[questionsArray objectAtIndex:index] objectAtIndex:1], nil];
     
+    int count = 1;
     for (NSMutableArray* question in questionsArray) {
+        if (count >= questionCount)
+            break;
         if (![[question objectAtIndex:1] isEqual:[answers objectAtIndex:0]]) {
+            count++;
             [answers addObject:[question objectAtIndex:1]];
         }
     }
     
     [self shuffle:answers];
-    [answer1 setTitle:[answers objectAtIndex:0] forState: UIControlStateNormal];
-    [answer2 setTitle:[answers objectAtIndex:1] forState: UIControlStateNormal];
-    [answer3 setTitle:[answers objectAtIndex:2] forState: UIControlStateNormal];
-    [answer4 setTitle:[answers objectAtIndex:3] forState: UIControlStateNormal];
-    [answer5 setTitle:[answers objectAtIndex:4] forState: UIControlStateNormal];
-    [answer6 setTitle:[answers objectAtIndex:5] forState: UIControlStateNormal];
-    [answer7 setTitle:[answers objectAtIndex:6] forState: UIControlStateNormal];
-    [answer8 setTitle:[answers objectAtIndex:7] forState: UIControlStateNormal];
-    [answer9 setTitle:[answers objectAtIndex:8] forState: UIControlStateNormal];
+    for (int position = 0; position < [buttons count]; position++) {
+        if (position < questionCount) {
+            [[buttons objectAtIndex:position] setHidden:false];
+            [[buttons objectAtIndex:position] setTitle:[answers objectAtIndex:position] forState: UIControlStateNormal];
+        } else {
+            [[buttons objectAtIndex:position] setHidden:true];
+        }
+    }
     
     return index;
 }
