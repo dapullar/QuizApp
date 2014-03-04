@@ -26,7 +26,7 @@ int rightAnswers = 0;
     }
     if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
         [feedback setTextColor:[UIColor greenColor]];
-        [feedback setText:@"You got it!"];
+        [feedback setText:@"    You got it!"];
         rightAnswers++;
     } else {
         [feedback setTextColor:[UIColor redColor]];
