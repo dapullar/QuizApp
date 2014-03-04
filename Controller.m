@@ -24,7 +24,7 @@ bool rareCharacters = false;
     if (!quizArray) {
         quizArray  = [self makeQuiz];
     }
-    if (questionNumber < 10) {
+    if (questionNumber < 2) {
         if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
             [feedback setTextColor:[UIColor greenColor]];
             [feedback setText:@"    You got it!"];
@@ -40,9 +40,15 @@ bool rareCharacters = false;
     } else {
         questionNumber = 0;
         quizArray = nil;
-        //ale's method
+        [self displayStats];
     }
     guesses++;
+}
+
+- (void)displayStats {
+    double percent = (((guesses - 10) * 100) / guesses);
+    NSString *result = [NSString stringWithFormat:@"%d guesses, %.2lf", guesses, percent];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Results" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
 }
 
 -(NSMutableArray*)makeQuiz {
@@ -205,6 +211,8 @@ bool rareCharacters = false;
         case 2:
             selectedDifficulty = 9;
             break;
+        default:
+            selectedDifficulty = 3;
     }
 }
 

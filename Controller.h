@@ -24,5 +24,6 @@
 -(BOOL)checkAnswer:(NSMutableArray*)questionsArray curr_index:(int)index answer:(NSString*)user_answer;
 -(IBAction)difficultySelected:(UISegmentedControl*)sender;
 -(IBAction)gameModeSelected:(UISegmentedControl*)sender;
+- (void)displayStats;
 
 @end
