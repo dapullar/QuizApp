@@ -19,8 +19,10 @@
 
 -(IBAction)answerSelected:(UIButton*)sender;
 -(NSMutableArray*)makeQuiz;
-- (void)shuffle:(NSMutableArray*)answers;
+-(void)shuffle:(NSMutableArray*)answers;
 -(int)populateQuiz:(NSMutableArray*)questionsArray;
 -(BOOL)checkAnswer:(NSMutableArray*)questionsArray curr_index:(int)index answer:(NSString*)user_answer;
+-(IBAction)difficultySelected:(UISegmentedControl*)sender;
+-(IBAction)gameModeSelected:(UISegmentedControl*)sender;
 
 @end
