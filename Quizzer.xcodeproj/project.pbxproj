@@ -32,6 +32,7 @@
 		C6271E7418C5691100A884EF /* ember.png in Resources */ = {isa = PBXBuildFile; fileRef = C6271E6C18C5691100A884EF /* ember.png */; };
 		C6271E7518C5691100A884EF /* bombette.png in Resources */ = {isa = PBXBuildFile; fileRef = C6271E6D18C5691100A884EF /* bombette.png */; };
 		C6271E7618C5691100A884EF /* bomb_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = C6271E6E18C5691100A884EF /* bomb_fish.png */; };
+		C6271E7818C5706300A884EF /* mystery_block.png in Resources */ = {isa = PBXBuildFile; fileRef = C6271E7718C5706300A884EF /* mystery_block.png */; };
 		C633608A18C3FE0F00B22E76 /* blue_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = C633607F18C3FE0F00B22E76 /* blue_bomb.png */; };
 		C633608B18C3FE0F00B22E76 /* fire_chomp.png in Resources */ = {isa = PBXBuildFile; fileRef = C633608018C3FE0F00B22E76 /* fire_chomp.png */; };
 		C633608C18C3FE0F00B22E76 /* goomba.png in Resources */ = {isa = PBXBuildFile; fileRef = C633608118C3FE0F00B22E76 /* goomba.png */; };
@@ -88,6 +89,7 @@
 		C6271E6C18C5691100A884EF /* ember.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ember.png; sourceTree = "<group>"; };
 		C6271E6D18C5691100A884EF /* bombette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bombette.png; sourceTree = "<group>"; };
 		C6271E6E18C5691100A884EF /* bomb_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bomb_fish.png; sourceTree = "<group>"; };
+		C6271E7718C5706300A884EF /* mystery_block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mystery_block.png; sourceTree = "<group>"; };
 		C633607F18C3FE0F00B22E76 /* blue_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_bomb.png; sourceTree = "<group>"; };
 		C633608018C3FE0F00B22E76 /* fire_chomp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire_chomp.png; sourceTree = "<group>"; };
 		C633608118C3FE0F00B22E76 /* goomba.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goomba.png; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		C633607E18C3FE0F00B22E76 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C6271E7718C5706300A884EF /* mystery_block.png */,
 				C6271E6718C5691100A884EF /* time_bob_omb.png */,
 				C6271E6818C5691100A884EF /* misstar.png */,
 				C6271E6918C5691100A884EF /* kirby.png */,
@@ -309,6 +312,7 @@
 				C633608D18C3FE0F00B22E76 /* lady_bow.png in Resources */,
 				C6271E6F18C5691100A884EF /* time_bob_omb.png in Resources */,
 				C633609118C3FE0F00B22E76 /* sylvia.png in Resources */,
+				C6271E7818C5706300A884EF /* mystery_block.png in Resources */,
 				C6271E7518C5691100A884EF /* bombette.png in Resources */,
 				C6271E7318C5691100A884EF /* jerry_the_bob_omb.png in Resources */,
 				AE7AF5AE18C3E35200FA12FF /* Main_iPad.storyboard in Resources */,
