@@ -13,10 +13,10 @@
 @synthesize buttons;
 NSMutableArray* quizArray = nil;
 int currIndex = 0;
-int questionCount = 6;
+int selectedDifficulty = 3;
 int questionNumber = 1;
 int rightAnswers = 0;
-
+bool rareCharacters = false;
 
 -(IBAction)answerSelected:(UIButton*)sender {
     NSString* answer = [sender currentTitle];
@@ -96,6 +96,46 @@ int rightAnswers = 0;
     [outerArray addObject:[innerArray copy]];
     [innerArray removeAllObjects];
     
+    [innerArray addObject:[UIImage imageNamed:@"bomb_fish.png"]];
+    [innerArray addObject:@"Bomb Fish"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"bombette.png"]];
+    [innerArray addObject:@"Bombette"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"ember.png"]];
+    [innerArray addObject:@"Ember"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"jerry_the_bob_omb.png"]];
+    [innerArray addObject:@"Jerry the Bomb"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"kersti.png"]];
+    [innerArray addObject:@"Kersti"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"kirby.png"]];
+    [innerArray addObject:@"Kirby"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+
+    [innerArray addObject:[UIImage imageNamed:@"misstar.png"]];
+    [innerArray addObject:@"Miss Star"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"time_bob_omb.png"]];
+    [innerArray addObject:@"Time Bomb"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
     return outerArray;
 }
 
@@ -107,7 +147,7 @@ int rightAnswers = 0;
     
     int count = 1;
     for (NSMutableArray* question in questionsArray) {
-        if (count >= questionCount)
+        if (count >= selectedDifficulty)
             break;
         if (![[question objectAtIndex:1] isEqual:[answers objectAtIndex:0]]) {
             count++;
@@ -117,7 +157,7 @@ int rightAnswers = 0;
     
     [self shuffle:answers];
     for (int position = 0; position < [buttons count]; position++) {
-        if (position < questionCount) {
+        if (position < selectedDifficulty) {
             [[buttons objectAtIndex:position] setHidden:false];
             [[buttons objectAtIndex:position] setTitle:[answers objectAtIndex:position] forState: UIControlStateNormal];
         } else {
@@ -143,6 +183,25 @@ int rightAnswers = 0;
         NSInteger n = arc4random_uniform(nElements) + i;
         [questionsArray exchangeObjectAtIndex:i withObjectAtIndex:n];
     }
+}
+
+-(IBAction)difficultySelected:(UISegmentedControl*)sender {
+    switch(sender.selectedSegmentIndex) {
+        case 0:
+            selectedDifficulty = 3;
+            break;
+        case 1:
+            selectedDifficulty = 6;
+            break;
+        case 2:
+            selectedDifficulty = 9;
+            break;
+    }
+}
+
+
+-(IBAction)gameModeSelected:(UISegmentedControl*)sender {
+    rareCharacters = sender.selectedSegmentIndex;
 }
 
 @end
