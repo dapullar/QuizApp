@@ -96,6 +96,46 @@ bool rareCharacters = false;
     [outerArray addObject:[innerArray copy]];
     [innerArray removeAllObjects];
     
+    [innerArray addObject:[UIImage imageNamed:@"bomb_fish.png"]];
+    [innerArray addObject:@"Bomb Fish"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"bombette.png"]];
+    [innerArray addObject:@"Bombette"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"ember.png"]];
+    [innerArray addObject:@"Ember"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"jerry_the_bob_omb.png"]];
+    [innerArray addObject:@"Jerry the Bomb"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"kersti.png"]];
+    [innerArray addObject:@"Kersti"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"kirby.png"]];
+    [innerArray addObject:@"Kirby"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+
+    [innerArray addObject:[UIImage imageNamed:@"misstar.png"]];
+    [innerArray addObject:@"Miss Star"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
+    [innerArray addObject:[UIImage imageNamed:@"time_bob_omb.png"]];
+    [innerArray addObject:@"Time Bomb"];
+    [outerArray addObject:[innerArray copy]];
+    [innerArray removeAllObjects];
+    
     return outerArray;
 }
 
