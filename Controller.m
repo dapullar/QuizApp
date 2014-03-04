@@ -15,7 +15,7 @@ NSMutableArray* quizArray = nil;
 int currIndex = 0;
 int selectedDifficulty = 3;
 int questionNumber = 0;
-int rightAnswers = 0;
+int guesses = -1;
 bool rareCharacters = false;
 
 -(IBAction)answerSelected:(UIButton*)sender {
@@ -29,7 +29,6 @@ bool rareCharacters = false;
             [feedback setTextColor:[UIColor greenColor]];
             [feedback setText:@"    You got it!"];
             currIndex = [self populateQuiz:quizArray];
-            rightAnswers++;
             [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
         } else if (!questionNumber) {
             [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
@@ -43,6 +42,7 @@ bool rareCharacters = false;
         quizArray = nil;
         //ale's method
     }
+    guesses++;
 }
 
 -(NSMutableArray*)makeQuiz {
