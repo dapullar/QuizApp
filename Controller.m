@@ -24,18 +24,24 @@ bool rareCharacters = false;
     if (!quizArray) {
         quizArray  = [self makeQuiz];
     }
-    if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
-        [feedback setTextColor:[UIColor greenColor]];
-        [feedback setText:@"    You got it!"];
-        currIndex = [self populateQuiz:quizArray];
-        rightAnswers++;
-        [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
-    } else if (!questionNumber) {
-        [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
-        currIndex = [self populateQuiz:quizArray];
-    }else {
-        [feedback setTextColor:[UIColor redColor]];
-        [feedback setText:@"Wrong! Try again!"];
+    if (questionNumber < 10) {
+        if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
+            [feedback setTextColor:[UIColor greenColor]];
+            [feedback setText:@"    You got it!"];
+            currIndex = [self populateQuiz:quizArray];
+            rightAnswers++;
+            [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
+        } else if (!questionNumber) {
+            [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
+            currIndex = [self populateQuiz:quizArray];
+        }else {
+            [feedback setTextColor:[UIColor redColor]];
+            [feedback setText:@"Wrong! Try again!"];
+        }
+    } else {
+        questionNumber = 0;
+        quizArray = nil;
+        //ale's method
     }
 }
 
@@ -172,6 +178,7 @@ bool rareCharacters = false;
 
 -(BOOL)checkAnswer:(NSMutableArray*)questionsArray curr_index:(int)index answer:(NSString*)user_answer {
     if ([[[questionsArray objectAtIndex:index] objectAtIndex:1] isEqual:user_answer]) {
+        [questionsArray removeObjectAtIndex:index];
         return true;
     }
     
