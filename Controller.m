@@ -13,22 +13,28 @@
 @synthesize buttons;
 NSMutableArray* quizArray = nil;
 int currIndex = 0;
-int questionCount = 9;
+int questionCount = 6;
+int questionNumber = 1;
+int rightAnswers = 0;
 
 
 -(IBAction)answerSelected:(UIButton*)sender {
-    
-    //Grab selected value
     NSString* answer = [sender currentTitle];
-    //Compare to correct answer
+    
     if (!quizArray) {
         quizArray  = [self makeQuiz];
     }
-    NSLog(@"%d", [self checkAnswer:quizArray curr_index:currIndex answer:answer]);
+    if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
+        [feedback setTextColor:[UIColor greenColor]];
+        [feedback setText:@"You got it!"];
+        rightAnswers++;
+    } else {
+        [feedback setTextColor:[UIColor redColor]];
+        [feedback setText:@"Wrong! Try again!"];
+    }
+    
+    [questions setText:[NSString stringWithFormat:@"Question %d out of 10", questionNumber++]];
     currIndex = [self populateQuiz:quizArray];
-    
-    //Decide
-    
 }
 
 -(NSMutableArray*)makeQuiz {
