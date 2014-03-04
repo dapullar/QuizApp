@@ -24,7 +24,7 @@ bool rareCharacters = false;
     if (!quizArray) {
         quizArray  = [self makeQuiz];
     }
-    if (questionNumber < 2) {
+    if (questionNumber < 10) {
         if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
             [feedback setTextColor:[UIColor greenColor]];
             [feedback setText:@"    You got it!"];
