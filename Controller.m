@@ -15,7 +15,7 @@ NSMutableArray* quizArray = nil;
 int currIndex = 0;
 int selectedDifficulty = 3;
 int questionNumber = 0;
-int guesses = -1;
+int guesses = 0;
 bool rareCharacters = false;
 
 -(IBAction)answerSelected:(UIButton*)sender {
@@ -24,6 +24,7 @@ bool rareCharacters = false;
     if (!quizArray) {
         quizArray  = [self makeQuiz];
     }
+    
     if (questionNumber < 10) {
         if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
             [feedback setTextColor:[UIColor greenColor]];
@@ -40,6 +41,8 @@ bool rareCharacters = false;
     } else {
         questionNumber = 0;
         quizArray = nil;
+        guesses = 0;
+        currIndex = 0;
         [self displayStats];
     }
     guesses++;
@@ -61,100 +64,102 @@ bool rareCharacters = false;
     NSMutableArray *innerArray = [[NSMutableArray alloc] initWithCapacity:2];
     NSMutableArray *outerArray = [[NSMutableArray alloc] init];
     
-    [innerArray addObject:[UIImage imageNamed:@"blue_bomb.png"]];
-    [innerArray addObject:@"Blue Bomb"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
+    if (rareCharacters) {
+        [innerArray addObject:[UIImage imageNamed:@"blue_bomb.png"]];
+        [innerArray addObject:@"Blue Bomb"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
     
-    [innerArray addObject:[UIImage imageNamed:@"fire_chomp.png"]];
-    [innerArray addObject:@"Fire Chomp"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
+        [innerArray addObject:[UIImage imageNamed:@"fire_chomp.png"]];
+        [innerArray addObject:@"Fire Chomp"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
     
-    [innerArray addObject:[UIImage imageNamed:@"goomba.png"]];
-    [innerArray addObject:@"Goomba"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"lady_bow.png"]];
-    [innerArray addObject:@"Lady Bow"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"nibbles.png"]];
-    [innerArray addObject:@"Nibbles"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"sombrero_guy.png"]];
-    [innerArray addObject:@"Shy Guy"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"starlow.png"]];
-    [innerArray addObject:@"Starlow"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"sylvia.png"]];
-    [innerArray addObject:@"Sylvia"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"toadette.png"]];
-    [innerArray addObject:@"Toadette"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"vivian.png"]];
-    [innerArray addObject:@"Vivian"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"watt.png"]];
-    [innerArray addObject:@"Watt"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"bomb_fish.png"]];
-    [innerArray addObject:@"Bomb Fish"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"bombette.png"]];
-    [innerArray addObject:@"Bombette"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"ember.png"]];
-    [innerArray addObject:@"Ember"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"jerry_the_bob_omb.png"]];
-    [innerArray addObject:@"Jerry the Bomb"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"kersti.png"]];
-    [innerArray addObject:@"Kersti"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"kirby.png"]];
-    [innerArray addObject:@"Kirby"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-
-    [innerArray addObject:[UIImage imageNamed:@"misstar.png"]];
-    [innerArray addObject:@"Miss Star"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
-    
-    [innerArray addObject:[UIImage imageNamed:@"time_bob_omb.png"]];
-    [innerArray addObject:@"Time Bomb"];
-    [outerArray addObject:[innerArray copy]];
-    [innerArray removeAllObjects];
+        [innerArray addObject:[UIImage imageNamed:@"goomba.png"]];
+        [innerArray addObject:@"Goomba"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"lady_bow.png"]];
+        [innerArray addObject:@"Lady Bow"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"nibbles.png"]];
+        [innerArray addObject:@"Nibbles"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"sombrero_guy.png"]];
+        [innerArray addObject:@"Shy Guy"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"starlow.png"]];
+        [innerArray addObject:@"Starlow"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"sylvia.png"]];
+        [innerArray addObject:@"Sylvia"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"toadette.png"]];
+        [innerArray addObject:@"Toadette"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"vivian.png"]];
+        [innerArray addObject:@"Vivian"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"watt.png"]];
+        [innerArray addObject:@"Watt"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+    } else {
+        [innerArray addObject:[UIImage imageNamed:@"bomb_fish.png"]];
+        [innerArray addObject:@"Bomb Fish"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"bombette.png"]];
+        [innerArray addObject:@"Bombette"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"ember.png"]];
+        [innerArray addObject:@"Ember"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"jerry_the_bob_omb.png"]];
+        [innerArray addObject:@"Jerry the Bomb"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"kersti.png"]];
+        [innerArray addObject:@"Kersti"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"kirby.png"]];
+        [innerArray addObject:@"Kirby"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"misstar.png"]];
+        [innerArray addObject:@"Miss Star"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+        
+        [innerArray addObject:[UIImage imageNamed:@"time_bob_omb.png"]];
+        [innerArray addObject:@"Time Bomb"];
+        [outerArray addObject:[innerArray copy]];
+        [innerArray removeAllObjects];
+    }
     
     return outerArray;
 }
