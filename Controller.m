@@ -33,7 +33,7 @@ bool rareCharacters = false;
         } else if (!questionNumber) {
             [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
             currIndex = [self populateQuiz:quizArray];
-        }else {
+        } else {
             [feedback setTextColor:[UIColor redColor]];
             [feedback setText:@"Wrong! Try again!"];
         }
@@ -48,7 +48,13 @@ bool rareCharacters = false;
 - (void)displayStats {
     double percent = (((guesses - 10) * 100) / guesses);
     NSString *result = [NSString stringWithFormat:@"%d guesses, %.2lf", guesses, percent];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Results" message:result delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]; [alert show];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Results"
+                          message:result
+                          delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert show];
 }
 
 -(NSMutableArray*)makeQuiz {
@@ -202,6 +208,7 @@ bool rareCharacters = false;
 
 -(IBAction)difficultySelected:(UISegmentedControl*)sender {
     switch(sender.selectedSegmentIndex) {
+        default:
         case 0:
             selectedDifficulty = 3;
             break;
@@ -211,14 +218,12 @@ bool rareCharacters = false;
         case 2:
             selectedDifficulty = 9;
             break;
-        default:
-            selectedDifficulty = 3;
     }
 }
 
 
 -(IBAction)gameModeSelected:(UISegmentedControl*)sender {
-    rareCharacters = sender.selectedSegmentIndex;
+    rareCharacters = [sender selectedSegmentIndex];
 }
 
 @end

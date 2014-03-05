@@ -18,12 +18,13 @@
 @property (nonatomic, retain) IBOutletCollection(UIButton) NSArray *buttons;
 
 -(IBAction)answerSelected:(UIButton*)sender;
+-(IBAction)difficultySelected:(UISegmentedControl*)sender;
+-(IBAction)gameModeSelected:(UISegmentedControl*)sender;
+
+-(void)displayStats;
 -(NSMutableArray*)makeQuiz;
 -(void)shuffle:(NSMutableArray*)answers;
 -(int)populateQuiz:(NSMutableArray*)questionsArray;
 -(BOOL)checkAnswer:(NSMutableArray*)questionsArray curr_index:(int)index answer:(NSString*)user_answer;
--(IBAction)difficultySelected:(UISegmentedControl*)sender;
--(IBAction)gameModeSelected:(UISegmentedControl*)sender;
-- (void)displayStats;
 
 @end
