@@ -17,6 +17,7 @@ int selectedDifficulty = 3;
 int questionNumber = 0;
 int guesses = 0;
 bool rareCharacters = false;
+int wrongAnswers = 0;
 
 -(IBAction)answerSelected:(UIButton*)sender {
     NSString* answer = [sender currentTitle];
