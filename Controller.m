@@ -19,6 +19,7 @@ int guesses = 0;
 bool rareCharacters = false;
 bool currentAnswerIsWrong = false;
 int wrongAnswers = 0;
+const int NUMBER_OF_QUESIONS = 10;
 
 -(IBAction)answerSelected:(UIButton*)sender {
     NSString* answer = [sender currentTitle];
@@ -27,25 +28,27 @@ int wrongAnswers = 0;
         quizArray  = [self makeQuiz];
     }
     
-    if (questionNumber < 10) {
-        if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
-            [feedback setTextColor:[UIColor greenColor]];
-            [feedback setText:@"    You got it!"];
+    if([self checkAnswer:quizArray curr_index:currIndex answer:answer]) {
+        [feedback setTextColor:[UIColor greenColor]];
+        [feedback setText:@"    You got it!"];
+        if (questionNumber < NUMBER_OF_QUESIONS) {
             currIndex = [self populateQuiz:quizArray];
-            [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
-            currentAnswerIsWrong = false;
-        } else if (!questionNumber) {
-            [questions setText:[NSString stringWithFormat:@"Question %d out of 10", ++questionNumber]];
-            currIndex = [self populateQuiz:quizArray];
-        } else {
-            [feedback setTextColor:[UIColor redColor]];
-            [feedback setText:@"Wrong! Try again!"];
-            if (!currentAnswerIsWrong) {
-                currentAnswerIsWrong = true;
-                wrongAnswers++;
-            }
+            [questions setText:[NSString stringWithFormat:@"Question %d out of %d", ++questionNumber, NUMBER_OF_QUESIONS]];
         }
+        currentAnswerIsWrong = false;
+    } else if (!questionNumber) {
+        [questions setText:[NSString stringWithFormat:@"Question %d out of %d", ++questionNumber, NUMBER_OF_QUESIONS]];
+        currIndex = [self populateQuiz:quizArray];
     } else {
+        [feedback setTextColor:[UIColor redColor]];
+        [feedback setText:@"Wrong! Try again!"];
+        if (!currentAnswerIsWrong) {
+            currentAnswerIsWrong = true;
+            wrongAnswers++;
+        }
+    }
+    
+    if (questionNumber > NUMBER_OF_QUESIONS && !currentAnswerIsWrong) {
         [self displayStats];
         questionNumber = 0;
         quizArray = nil;
@@ -56,8 +59,8 @@ int wrongAnswers = 0;
 }
 
 - (void)displayStats {
-    double percent = (((guesses - 10) * 100) / guesses);
-    NSString *result = [NSString stringWithFormat:@"%d guesses, %.2lf", guesses, percent];
+    double percent = ((NUMBER_OF_QUESIONS - wrongAnswers) / NUMBER_OF_QUESIONS) * 100;
+    NSString *result = [NSString stringWithFormat:@"%d guesses, %.2lf%%", guesses, percent];
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:@"Results"
                           message:result

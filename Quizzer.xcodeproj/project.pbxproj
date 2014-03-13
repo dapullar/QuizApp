@@ -79,8 +79,8 @@
 		AE7AF5C418C3E35200FA12FF /* QuizzerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QuizzerTests-Info.plist"; sourceTree = "<group>"; };
 		AE7AF5C618C3E35200FA12FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AE7AF5C818C3E35200FA12FF /* QuizzerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuizzerTests.m; sourceTree = "<group>"; };
-		AE7AF5D218C3E84600FA12FF /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
-		AE7AF5D318C3E84600FA12FF /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		AE7AF5D218C3E84600FA12FF /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Controller.h; path = ../Controller.h; sourceTree = "<group>"; };
+		AE7AF5D318C3E84600FA12FF /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Controller.m; path = ../Controller.m; sourceTree = "<group>"; };
 		C6271E6718C5691100A884EF /* time_bob_omb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_bob_omb.png; sourceTree = "<group>"; };
 		C6271E6818C5691100A884EF /* misstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = misstar.png; sourceTree = "<group>"; };
 		C6271E6918C5691100A884EF /* kirby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kirby.png; sourceTree = "<group>"; };
@@ -130,8 +130,6 @@
 		AE7AF58B18C3E35100FA12FF = {
 			isa = PBXGroup;
 			children = (
-				AE7AF5D218C3E84600FA12FF /* Controller.h */,
-				AE7AF5D318C3E84600FA12FF /* Controller.m */,
 				AE7AF59D18C3E35200FA12FF /* Quizzer */,
 				AE7AF5C218C3E35200FA12FF /* QuizzerTests */,
 				AE7AF59618C3E35100FA12FF /* Frameworks */,
@@ -162,7 +160,8 @@
 		AE7AF59D18C3E35200FA12FF /* Quizzer */ = {
 			isa = PBXGroup;
 			children = (
-				C633607E18C3FE0F00B22E76 /* Images */,
+				AE7AF5D218C3E84600FA12FF /* Controller.h */,
+				AE7AF5D318C3E84600FA12FF /* Controller.m */,
 				AE7AF5A618C3E35200FA12FF /* AppDelegate.h */,
 				AE7AF5A718C3E35200FA12FF /* AppDelegate.m */,
 				AE7AF5A918C3E35200FA12FF /* Main_iPhone.storyboard */,
@@ -171,6 +170,7 @@
 				AE7AF5B018C3E35200FA12FF /* MainViewController.m */,
 				AE7AF5B218C3E35200FA12FF /* FlipsideViewController.h */,
 				AE7AF5B318C3E35200FA12FF /* FlipsideViewController.m */,
+				C633607E18C3FE0F00B22E76 /* Images */,
 				AE7AF5B518C3E35200FA12FF /* Images.xcassets */,
 				AE7AF59E18C3E35200FA12FF /* Supporting Files */,
 			);
